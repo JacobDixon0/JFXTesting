@@ -1,7 +1,5 @@
 package com.royalslothking.jfxtesting.ball;
 
-import java.util.Random;
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -23,7 +21,6 @@ public class Ball extends Application{
 	int windowSizeX = 600;
 	int windowSizeY = 400;
 	double g = 2;
-	Random random = new Random();
 	
 	public static void main(String[] args) {
 		launch(args);
