@@ -121,7 +121,7 @@ public class JFXTesting extends Application{
 	public void reset(Rectangle rect) {
 		rect.setX(0);
 		rect.setY(0);
-		System.out.println("reset");
+		//System.out.println("reset");
 	}
 	
 	private void moveThisThing(Scene scene, Rectangle rect) {
@@ -134,19 +134,19 @@ public class JFXTesting extends Application{
 				switch (event.getCode()) {
 				
 				case UP:
-					System.out.println("up");
+					//System.out.println("up");
 					rect.setY(rect.getY() - f);
 					break;
 				case DOWN:
-					System.out.println("down");
+					//System.out.println("down");
 					rect.setY(rect.getY() + f);
 					break;	
 				case LEFT:
-					System.out.println("left");
+					//System.out.println("left");
 					rect.setX(rect.getX() - f);
 					break;
 				case RIGHT:
-					System.out.println("right");
+					//System.out.println("right");
 					rect.setX(rect.getX() + f);
 					break;
 						
@@ -157,19 +157,19 @@ public class JFXTesting extends Application{
 				
 				if(rect.getX() + 100 > 600) {
 					rect.setX( rect.getX() - 10 );
-					System.out.println("reached out of bounds: +x");
+					//System.out.println("reached out of bounds: +x");
 				}
 				if(rect.getX() < 0) {
 					rect.setX( rect.getX() + 10 );
-					System.out.println("reached out of bounds: -x");
+					//System.out.println("reached out of bounds: -x");
 				}
 				if(rect.getY() + 100 > 400) {
 					rect.setY( rect.getY() - 10 );
-					System.out.println("reached out of bounds: +y");
+					//System.out.println("reached out of bounds: +y");
 				}
 				if(rect.getY() < 0) {
 					rect.setY( rect.getY() + 10 );
-					System.out.println("reached out of bounds: -y");
+					//System.out.println("reached out of bounds: -y");
 				}
 				
 			}
@@ -189,20 +189,20 @@ public class JFXTesting extends Application{
 				rect.setY(event.getY() - 25);
 				
 				if(rect.getX() + 50 > 600) {
-					rect.setX( rect.getX() - 100);
-					System.out.println("reached out of bounds: +x");
+					reset(rect);
+					//System.out.println("reached out of bounds: +x");
 				}
 				if(rect.getX() < 0) {
 					reset(rect);
-					System.out.println("reached out of bounds: -x");
+					//System.out.println("reached out of bounds: -x");
 				}
 				if(rect.getY() + 50 > 400) {
 					reset(rect);
-					System.out.println("reached out of bounds: +y");
+					//System.out.println("reached out of bounds: +y");
 				}
 				if(rect.getY() < 0) {
 					reset(rect);
-					System.out.println("reached out of bounds: -y");
+					//System.out.println("reached out of bounds: -y");
 				}
 				
 			}
@@ -238,7 +238,7 @@ public class JFXTesting extends Application{
 		}else if (!(colorShift)) {
 			rectColorBlue -= 1;
 		}
-		System.out.println(rectColorRed);
+		//System.out.println(rectColorRed);
 		
 		}
 		
