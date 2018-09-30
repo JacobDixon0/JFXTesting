@@ -1,7 +1,8 @@
 //I have no idea what I'm doing...
 
-package jfxTesting;
+package com.royalslothking.jfxtesting;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -25,6 +26,11 @@ public class JFXTesting extends Application{
 	int windowSizeX = 600;
 	int windowSizeY = 400;
 	
+	int rectColorRed = 0;
+	int rectColorBlue = 0;
+	int rectColorGreen = 0;
+	boolean colorShift = true;
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -36,12 +42,13 @@ public class JFXTesting extends Application{
 		
 		Button btn = new Button();
 		Button btn2 = new Button("Start");
+		Button btn3 = new Button("Back");
 		Pane root = new Pane();
 		VBox root2 = new VBox();
 		Canvas canvas = new Canvas(windowSizeX, windowSizeY);
-		Rectangle rect = makeRect(0, 0, 100, 100, Color.BLUE, true);
+		Rectangle rect = makeRect(0, 0, 100, 100, Color.WHITE, true);
 		Rectangle rect2 = makeRect(0, 0, windowSizeX, windowSizeY, Color.BLACK, false);
-		Rectangle rect3 = makeRect(0, 0, 50, 50, Color.WHITE, false);
+		Rectangle rect3 = makeRect(0, 0, 50, 50, Color.BLUE, false);
 		Label label = new Label("hi :)");
 		
 		Rectangle[] rectanglez = { rect, rect2, rect3 };
@@ -56,19 +63,41 @@ public class JFXTesting extends Application{
 			
 		});
 		
+		btn3.setOnAction(e -> {
+			window.setScene(scene2);
+		});
+		
 		btn2.setTranslateX(10);
 		btn2.setTranslateY(10);
 		
-		scene = new Scene(root, windowSizeX, windowSizeY, Color.BLACK);
-		scene2 = new Scene(root2, windowSizeX, windowSizeY, Color.BLACK);
+		btn3.setTranslateX(10);
+		btn3.setTranslateY(40);
 		
-		root.getChildren().addAll(canvas, rect2, rect, rect3, btn);
+		label.setTranslateX(5);
+		label.setTranslateY(5);
+		
+		scene = new Scene(root, windowSizeX, windowSizeY);
+		scene2 = new Scene(root2, windowSizeX, windowSizeY);
+		
+		root.getChildren().addAll(canvas, rect2, rect, rect3, btn, btn3);
 		root2.getChildren().addAll(label, btn2);
 		
 		moveThisThing(scene, rect);
 		moveThisThingCursor(scene, rect3);
 		
 		btn2.setOnAction(e -> window.setScene(scene));
+		
+		AnimationTimer timer = new AnimationTimer() {
+
+			@Override
+			public void handle(long now) {
+				onUpdate(rect);
+				
+			}
+		
+		};
+		
+		timer.start();
 		
 		window.setTitle("Title");
 		window.setScene(scene2);
@@ -120,7 +149,9 @@ public class JFXTesting extends Application{
 					System.out.println("right");
 					rect.setX(rect.getX() + f);
 					break;
+						
 				default:
+					//This probably meant something at some point.
 					System.out.println("input IE");
 				}
 				
@@ -177,6 +208,39 @@ public class JFXTesting extends Application{
 			}
 			
 		});
+		
+	}
+	
+	public void onUpdate(Rectangle rect){
+		
+		if (window.getScene() == scene) {
+			
+		rect.setFill(Color.rgb(rectColorRed, rectColorGreen, rectColorBlue));
+		
+		//I don't know.
+		if(rectColorRed == 0) {
+			colorShift = true;
+		}else if(rectColorRed == 255) {
+			colorShift = false;
+		}
+		if(colorShift) {
+			rectColorRed += 1;
+		}else if (!(colorShift)) {
+			rectColorRed -= 1;
+		}
+		if(colorShift) {
+			rectColorGreen += 1;
+		}else if (!(colorShift)) {
+			rectColorGreen -= 1;
+		}
+		if(colorShift) {
+			rectColorBlue += 1;
+		}else if (!(colorShift)) {
+			rectColorBlue -= 1;
+		}
+		System.out.println(rectColorRed);
+		
+		}
 		
 	}
 	
