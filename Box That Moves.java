@@ -135,41 +135,33 @@ public class JFXTesting extends Application{
 				
 				case UP:
 					//System.out.println("up");
-					rect.setY(rect.getY() - f);
+					if(rect.getY() > 0) {
+						rect.setY(rect.getY() - f);
+						//System.out.println("reached out of bounds: +x");
+					}
 					break;
 				case DOWN:
 					//System.out.println("down");
-					rect.setY(rect.getY() + f);
+					if(rect.getY() + 100 < windowSizeY) {
+						rect.setY(rect.getY() + f);
+						//System.out.println("reached out of bounds: +x");
+					}
 					break;	
 				case LEFT:
 					//System.out.println("left");
-					rect.setX(rect.getX() - f);
+					if(rect.getX() > 0) {
+						rect.setX(rect.getX() - f);
+						//System.out.println("reached out of bounds: +x");
+					}
 					break;
 				case RIGHT:
 					//System.out.println("right");
-					rect.setX(rect.getX() + f);
+					if(rect.getX() + 100 < windowSizeX) {
+						rect.setX(rect.getX() + f);
+						//System.out.println("reached out of bounds: +x");
+					}
 					break;
 						
-				default:
-					//This probably meant something at some point.
-					System.out.println("input IE");
-				}
-				
-				if(rect.getX() + 100 > 600) {
-					rect.setX( rect.getX() - 10 );
-					//System.out.println("reached out of bounds: +x");
-				}
-				if(rect.getX() < 0) {
-					rect.setX( rect.getX() + 10 );
-					//System.out.println("reached out of bounds: -x");
-				}
-				if(rect.getY() + 100 > 400) {
-					rect.setY( rect.getY() - 10 );
-					//System.out.println("reached out of bounds: +y");
-				}
-				if(rect.getY() < 0) {
-					rect.setY( rect.getY() + 10 );
-					//System.out.println("reached out of bounds: -y");
 				}
 				
 			}
